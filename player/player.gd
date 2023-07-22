@@ -11,7 +11,6 @@ class_name Player
 @export var descent_jump_time := 0.35
 @export var jump_height := 80.0
 @export var limit_gravity := 500.0
-@export var coyote_time := 0.15
 @onready var gravity = ((-2.0 * jump_height) / (peak_jump_time * peak_jump_time)) * -1.0
 @onready var fall_gravity = ((-2.0 * jump_height) / (descent_jump_time * descent_jump_time)) * -1.0
 @onready var jump_velocity = ((2.0 * jump_height) / (peak_jump_time)) * -1.0
@@ -23,9 +22,11 @@ var has_jumped := false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var state_machine: Node = $StateMachine as StateMachine
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var state_label: Label = $StateLabel
+@onready var camera_2d: Camera2D = $Camera2D
 
 
-
+const DIE_EFFECT_SCENE := preload("res://effect/die_effect.tscn")
 
 
 
@@ -39,6 +40,7 @@ func _process(delta: float) -> void:
 	state_machine.process(delta)
 
 func _physics_process(delta: float) -> void:
+	state_label.text = state_machine.current_state.name
 	state_machine.physics_process(delta)
 	
 func _unhandled_input(event: InputEvent) -> void:
@@ -46,4 +48,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _die():
+	Sounds.play(Sounds.die)
+	Utils.instantiate_scene_on_world(DIE_EFFECT_SCENE, global_position)
 	queue_free()
+	camera_2d.reparent(get_tree().current_scene)
+
+
+func _on_hurtbox_hurt(damage) -> void:
+	Sounds.play(Sounds.hurt)
+	PlayerStats.health -= damage

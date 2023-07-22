@@ -18,7 +18,10 @@ func enter() -> void:
 	super()
 	player.velocity.y = player.jump_velocity
 	player.has_jumped = true
+	
 	Utils.instantiate_scene_on_world(JUMP_EFFECT_SCENE, player.global_position)
+	
+	Sounds.play(Sounds.jump, 1.0, -10.0)
 
 func unhandled_input(event: InputEvent) -> BaseState:
 	# small jump

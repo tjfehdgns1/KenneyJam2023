@@ -60,5 +60,6 @@ func get_movement_input() -> int:
 
 
 func creat_dust_effect():
+	Sounds.play(Sounds.footstep, 1.0, -10.0)
 	Utils.instantiate_scene_on_world(DUST_EFFECT_SCENE, player.global_position)
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c7lb0gu6dn8ve"]
+[gd_scene load_steps=23 format=3 uid="uid://c7lb0gu6dn8ve"]
 
 [ext_resource type="Texture2D" uid="uid://bo1kn4grujnlo" path="res://asset/player/player.png" id="1_vqef6"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_yhkxv"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://player/states/Jump.gd" id="7_5ic42"]
 [ext_resource type="Script" path="res://player/states/Fall.gd" id="8_6nbf2"]
 [ext_resource type="PackedScene" uid="uid://c4djgw26p7j6u" path="res://common/camera_2d.tscn" id="9_ev7qv"]
+[ext_resource type="PackedScene" uid="uid://cs8pit26v6l6g" path="res://autoload/player_stats.tscn" id="11_eoeqb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwgfx"]
 size = Vector2(10, 15)
@@ -144,6 +145,14 @@ _data = {
 "run": SubResource("Animation_0r2la")
 }
 
+[sub_resource type="Animation" id="Animation_2p8rq"]
+resource_name = "blink"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k030u"]
+_data = {
+"blink": SubResource("Animation_2p8rq")
+}
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 10
 collision_layer = 16
@@ -178,6 +187,17 @@ shape = SubResource("CapsuleShape2D_m6hil")
 libraries = {
 "": SubResource("AnimationLibrary_j5j2u")
 }
+
+[node name="OverrideAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k030u")
+}
+
+[node name="Camera2D" parent="." instance=ExtResource("9_ev7qv")]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+editor_draw_limits = true
 
 [node name="StateMachine" parent="." instance=ExtResource("4_jsahv")]
 initial_state = NodePath("Idle")
@@ -222,8 +242,10 @@ one_shot = true
 script = ExtResource("6_a5ypt")
 animation_name = "jet"
 
-[node name="Camera2D" parent="." instance=ExtResource("9_ev7qv")]
-process_callback = 0
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-editor_draw_limits = true
+[node name="PlayerStats" parent="." instance=ExtResource("11_eoeqb")]
+
+[node name="StateLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbsy56t5732xj"]
+
+[ext_resource type="Script" path="res://common/jumpbox.gd" id="1_wva7h"]
+
+[node name="Jumpbox" type="Area2D"]
+script = ExtResource("1_wva7h")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

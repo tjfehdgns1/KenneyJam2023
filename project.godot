@@ -16,12 +16,16 @@ run/main_scene="res://world.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://sound/default_bus_layout.tres"
+
 [autoload]
 
 Events="*res://autoload/Events.gd"
-Sounds="*res://autoload/Sounds.gd"
 Utils="*res://autoload/Utils.gd"
 PlayerStats="*res://autoload/player_stats.tscn"
+Sounds="*res://autoload/sounds.tscn"
 
 [display]
 
