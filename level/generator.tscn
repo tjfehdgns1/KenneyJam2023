@@ -6,3 +6,9 @@
 script = ExtResource("1_ksubl")
 
 [node name="Rooms" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+offset = Vector2(-640, 0)
+anchor_mode = 0
+zoom = Vector2(0.1, 0.1)

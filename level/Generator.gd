@@ -57,6 +57,7 @@ func generate_path() -> void:
 	pos_y += 1
 	
 	while pos_y < HEIGHT-1:
+		await get_tree().create_timer(generateDelay).timeout
 		if room_option_left.is_empty():
 			room_option_left = room_option.duplicate()
 			room_option_left.shuffle()

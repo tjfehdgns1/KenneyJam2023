@@ -59,3 +59,6 @@ func physics_process(delta: float) -> BaseState:
 			return run_state
 		return idle_state
 	return null
+
+#func exit():
+#	player.has_jumped = false

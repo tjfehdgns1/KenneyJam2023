@@ -1,17 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://cs8mr002jo2iy"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_n462j"]
-[ext_resource type="PackedScene" uid="uid://hwg0soyf0ghk" path="res://level/tutorial_level.tscn" id="2_7o06l"]
 [ext_resource type="PackedScene" uid="uid://c7lb0gu6dn8ve" path="res://player/player.tscn" id="3_crhfj"]
 [ext_resource type="PackedScene" uid="uid://bxwn2mjsj8pl6" path="res://ui/health_bar.tscn" id="4_067c2"]
+[ext_resource type="PackedScene" uid="uid://8ll2ex4ljwrs" path="res://level/generator.tscn" id="4_bbyal"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_n462j")
 
-[node name="Level1" parent="." instance=ExtResource("2_7o06l")]
-
 [node name="Player" parent="." instance=ExtResource("3_crhfj")]
-position = Vector2(80, 0)
+position = Vector2(80, -10)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -20,3 +18,11 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 16.0
 offset_bottom = 16.0
+
+[node name="ResourceLabel" type="Label" parent="HUD"]
+offset_left = 41.0
+offset_top = 14.0
+offset_right = 81.0
+offset_bottom = 37.0
+
+[node name="Generator" parent="." instance=ExtResource("4_bbyal")]

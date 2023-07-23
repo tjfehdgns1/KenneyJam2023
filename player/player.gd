@@ -35,6 +35,7 @@ const DIE_EFFECT_SCENE := preload("res://effect/die_effect.tscn")
 func _ready() -> void:
 	PlayerStats.health_empty.connect(_die)
 	state_machine.init(self)
+	Global.player = self
 	
 func _process(delta: float) -> void:
 	state_machine.process(delta)

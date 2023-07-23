@@ -4,12 +4,12 @@
 [ext_resource type="Script" path="res://player/player.gd" id="1_yhkxv"]
 [ext_resource type="PackedScene" uid="uid://clw1cyo74dvvq" path="res://common/hurtbox.tscn" id="2_chts0"]
 [ext_resource type="PackedScene" uid="uid://bio0lsyu7v2ro" path="res://common/state_machine.tscn" id="4_jsahv"]
-[ext_resource type="Script" path="res://common/base_state.gd" id="6_a5ypt"]
 [ext_resource type="Script" path="res://player/states/Idle.gd" id="6_b6m3c"]
 [ext_resource type="Script" path="res://player/states/Run.gd" id="6_c2q2s"]
 [ext_resource type="Script" path="res://player/states/Jump.gd" id="7_5ic42"]
 [ext_resource type="Script" path="res://player/states/Fall.gd" id="8_6nbf2"]
 [ext_resource type="PackedScene" uid="uid://c4djgw26p7j6u" path="res://common/camera_2d.tscn" id="9_ev7qv"]
+[ext_resource type="Script" path="res://player/states/Jet.gd" id="10_7flfh"]
 [ext_resource type="PackedScene" uid="uid://cs8pit26v6l6g" path="res://autoload/player_stats.tscn" id="11_eoeqb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwgfx"]
@@ -228,24 +228,38 @@ script = ExtResource("8_6nbf2")
 run_node = NodePath("../Run")
 idle_node = NodePath("../Idle")
 jump_node = NodePath("../Jump")
+jet_node = NodePath("../Jet")
 animation_name = "fall"
 
 [node name="CoyoteTimer" type="Timer" parent="StateMachine/Fall"]
+process_callback = 0
 wait_time = 0.15
 one_shot = true
 
-[node name="JumpBufferTimer" type="Timer" parent="StateMachine/Fall"]
-wait_time = 0.1
+[node name="Jet" type="Node" parent="StateMachine"]
+script = ExtResource("10_7flfh")
+fall_node = NodePath("../Fall")
+idle_node = NodePath("../Idle")
+run_node = NodePath("../Run")
+jump_node = NodePath("../Jump")
+animation_name = "jet"
+
+[node name="JumpDelayTimer" type="Timer" parent="StateMachine/Jet"]
+process_callback = 0
+wait_time = 0.05
 one_shot = true
 
-[node name="Jet" type="Node" parent="StateMachine"]
-script = ExtResource("6_a5ypt")
-animation_name = "jet"
+[node name="FireRateTimer" type="Timer" parent="StateMachine/Jet"]
+process_callback = 0
+wait_time = 0.3
+one_shot = true
 
 [node name="PlayerStats" parent="." instance=ExtResource("11_eoeqb")]
 
 [node name="StateLabel" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -19.0
+offset_top = -41.0
+offset_right = 21.0
+offset_bottom = -18.0
 
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
