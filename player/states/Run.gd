@@ -19,7 +19,7 @@ func enter():
 	
 
 func unhandled_input(event: InputEvent) -> BaseState:
-	if Input.is_action_just_pressed("jump") and !player.has_jumped or player.velocity.y > 0:
+	if Input.is_action_just_pressed("jump") and !player.has_jumped and player.velocity.y == 0:
 		return jump_state
 	return null
 

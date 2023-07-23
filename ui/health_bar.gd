@@ -9,8 +9,8 @@ extends Control
 
 
 func _ready() -> void:
-	health_ui()
 	max_health_ui()
+	health_ui()
 	PlayerStats.max_health_changed.connect(max_health_ui)
 	PlayerStats.health_changed.connect(health_ui)
 	

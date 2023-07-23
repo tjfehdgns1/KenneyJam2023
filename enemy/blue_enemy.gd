@@ -3,16 +3,24 @@ extends RigidBody2D
 
 @onready var stats: Stats = $Stats
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var hitbox: Area2D = $Hitbox
 
 
 const DIE_EFFECT_SCENE := preload("res://effect/die_effect.tscn")
 
 
 
-func _on_stats_health_empty() -> void:
+
+func create_die_effect():
 	Utils.instantiate_scene_on_world(DIE_EFFECT_SCENE, global_position)
-	Sounds.play(Sounds.die)
-	queue_free()
+
+
+
+
+func _on_stats_health_empty() -> void:
+	Sounds.play(Sounds.die,1.5)
+	animation_player.play("die")
+
 
 
 func _on_hurtbox_hurt(damage) -> void:
@@ -23,5 +31,6 @@ func _on_hurtbox_hurt(damage) -> void:
 func _on_jumpbox_bounce(object: Player) -> void:
 	if not object is Player: return
 	if object.velocity.y > 0:
+		hitbox.monitoring = false
 		object.velocity.y = object.jump_velocity
 		stats.health -= 10

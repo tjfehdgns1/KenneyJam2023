@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://8ll2ex4ljwrs"]
+
+[ext_resource type="Script" path="res://level/Generator.gd" id="1_ksubl"]
+
+[node name="Generator" type="Node2D"]
+script = ExtResource("1_ksubl")
+
+[node name="Rooms" type="Node2D" parent="."]
