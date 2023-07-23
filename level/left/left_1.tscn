@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://tny38nae5oww"]
+[gd_scene load_steps=4 format=3 uid="uid://tny38nae5oww"]
 
 [ext_resource type="PackedScene" uid="uid://b57qw03gn4jus" path="res://level/level_template.tscn" id="1_cy61f"]
 [ext_resource type="PackedScene" uid="uid://bq5nlpye52ueo" path="res://enemy/blue_enemy.tscn" id="2_rnjvx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdkux"]
+size = Vector2(89, 126)
 
 [node name="Left1" instance=ExtResource("1_cy61f")]
 
@@ -19,3 +22,17 @@ position = Vector2(267, 160)
 
 [node name="BlueEnemy2" parent="Enemies" index="1" instance=ExtResource("2_rnjvx")]
 position = Vector2(293, 338)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="3"]
+collision_mask = 48
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(-32, 627)
+shape = SubResource("RectangleShape2D_jdkux")
+
+[node name="Label" type="Label" parent="StaticBody2D" index="1"]
+offset_left = 12.0
+offset_top = 536.0
+offset_right = 121.0
+offset_bottom = 577.0
+text = "not ready"

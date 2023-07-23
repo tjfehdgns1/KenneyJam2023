@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://uo5nwfwotl82"
+path="res://.godot/imported/Bob&#039;s Adventures - back34.mp3-cba7fe8b2a55e2996f07c023f274b701.mp3str"
+
+[deps]
+
+source_file="res://sound/Bob&#039;s Adventures - back34.mp3"
+dest_files=["res://.godot/imported/Bob&#039;s Adventures - back34.mp3-cba7fe8b2a55e2996f07c023f274b701.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs8mr002jo2iy"]
+[gd_scene load_steps=11 format=3 uid="uid://cs8mr002jo2iy"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_n462j"]
 [ext_resource type="Script" path="res://ui/HUD.gd" id="3_8hmng"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://b7aygpeqtr04" path="res://ui/pause_menu.tscn" id="5_7f73i"]
 [ext_resource type="Theme" uid="uid://ic3aib8j76ci" path="res://ui/default_theme.tres" id="6_yq7by"]
 [ext_resource type="PackedScene" uid="uid://bq5nlpye52ueo" path="res://enemy/blue_enemy.tscn" id="7_0xiu8"]
+[ext_resource type="PackedScene" uid="uid://c4cin8jn64hj3" path="res://level/finish_area.tscn" id="10_1vcrb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xp0jl"]
+size = Vector2(155, 61)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_n462j")
@@ -37,9 +41,33 @@ process_mode = 3
 visible = false
 theme = ExtResource("6_yq7by")
 
+[node name="ColorRect" type="ColorRect" parent="HUD"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Generator" parent="." instance=ExtResource("4_bbyal")]
 
 [node name="BlueEnemy" parent="." instance=ExtResource("7_0xiu8")]
 position = Vector2(111, -5)
+
+[node name="FinishArea" parent="." instance=ExtResource("10_1vcrb")]
+position = Vector2(532, -52)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea"]
+position = Vector2(11.5, 20.5)
+shape = SubResource("RectangleShape2D_xp0jl")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 176.0
+offset_top = -144.0
+offset_right = 396.0
+offset_bottom = -90.0
+text = "go down
+explore underground"
+horizontal_alignment = 1
 
 [editable path="HUD/PauseMenu"]

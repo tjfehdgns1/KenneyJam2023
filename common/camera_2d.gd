@@ -12,6 +12,7 @@ var target
 func _ready() -> void:
 	Events.add_screenshake.connect(_start_screenshake)
 	Events.camera_limits_changed.connect(_update_limit)
+
 	
 func _process(delta: float) -> void:
 	offset.x = randf_range(-shake, shake)
@@ -31,3 +32,4 @@ func _update_limit(left, right, top, bottom):
 
 func _on_timer_timeout() -> void:
 	shake = 0
+

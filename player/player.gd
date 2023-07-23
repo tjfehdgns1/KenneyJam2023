@@ -53,14 +53,15 @@ func _unhandled_input(event: InputEvent) -> void:
 func _die():
 	Sounds.play(Sounds.die)
 	Utils.instantiate_scene_on_world(DIE_EFFECT_SCENE, global_position)
-#	set_physics_process(false)
-#	await get_tree().create_timer(4.0).timeout
-#	queue_free()
-#	camera_2d.reparent(get_tree().current_scene)
+	set_physics_process(false)
+	animation_player.play("die")
+	await get_tree().create_timer(2.0).timeout
+	get_tree().change_scene_to_file("res://ui/die_menu.tscn")
 
 
 func _on_hurtbox_hurt(damage) -> void:
 	Events.add_screenshake.emit(2, 0.1)
+	Events.player_hurt.emit()
 	PlayerStats.health -= damage
 	Sounds.play(Sounds.hurt)
 	print_debug("hurt")

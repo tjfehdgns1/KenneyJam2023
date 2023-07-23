@@ -18,6 +18,8 @@ extends BaseState
 @onready var fire_rate_timer: Timer = $FireRateTimer
 
 
+const JET_EFFECT_SCENE := preload("res://effect/jump_effect.tscn")
+
 func enter():
 	super()
 
@@ -51,6 +53,8 @@ func physics_process(delta: float) -> BaseState:
 		fire_rate_timer.start()
 		PlayerStats.resource -= 1
 		player.velocity.y = player.jet_force
+		Utils.instantiate_scene_on_world(JET_EFFECT_SCENE, player.global_position)
+		Sounds.play(Sounds.jet, 1.5, -20.0)
 	
 	
 	player.velocity.x = move * player.air_speed

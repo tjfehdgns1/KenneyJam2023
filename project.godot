@@ -27,6 +27,7 @@ Utils="*res://autoload/Utils.gd"
 PlayerStats="*res://autoload/player_stats.tscn"
 Sounds="*res://autoload/sounds.tscn"
 Global="*res://autoload/Global.gd"
+Music="*res://autoload/music.tscn"
 
 [display]
 

@@ -5,6 +5,8 @@ extends Node
 @export var jump : AudioStream
 @export var die : AudioStream
 @export var hurt : AudioStream
+@export var jet : AudioStream
+@export var reload : AudioStream
 
 
 
