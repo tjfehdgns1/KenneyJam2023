@@ -16,6 +16,7 @@ extends BaseState
 func enter() -> void:
 	super()
 	player.velocity.x = 0
+	PlayerStats.resource = PlayerStats.max_resource
 
 func unhandled_input(event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right"):

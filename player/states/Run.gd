@@ -16,7 +16,7 @@ const DUST_EFFECT_SCENE := preload("res://effect/dust_effect.tscn")
 
 func enter():
 	super()
-	
+	PlayerStats.resource = PlayerStats.max_resource
 
 func unhandled_input(event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("jump") and !player.has_jumped and player.velocity.y == 0:

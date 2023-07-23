@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://84vadp5srv83"]
+[gd_scene load_steps=3 format=3 uid="uid://84vadp5srv83"]
 
 [ext_resource type="PackedScene" uid="uid://b57qw03gn4jus" path="res://level/level_template.tscn" id="1_invpf"]
+[ext_resource type="PackedScene" uid="uid://bq5nlpye52ueo" path="res://enemy/blue_enemy.tscn" id="2_x0av1"]
 
 [node name="Right1" instance=ExtResource("1_invpf")]
 
@@ -10,3 +11,14 @@ layer_0/tile_data = PackedInt32Array(1376262, 65536, 4, 1310726, 65536, 4, 12451
 [node name="RoomSizeIndicator" parent="." index="1"]
 offset_left = 640.0
 offset_right = 1280.0
+
+[node name="Enemies" type="Node2D" parent="." index="2"]
+
+[node name="BlueEnemy" parent="Enemies" index="0" instance=ExtResource("2_x0av1")]
+position = Vector2(271, 271)
+
+[node name="BlueEnemy3" parent="Enemies" index="1" instance=ExtResource("2_x0av1")]
+position = Vector2(239, 605)
+
+[node name="BlueEnemy2" parent="Enemies" index="2" instance=ExtResource("2_x0av1")]
+position = Vector2(384, 93)

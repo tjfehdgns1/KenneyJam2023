@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cs8mr002jo2iy"]
+[gd_scene load_steps=9 format=3 uid="uid://cs8mr002jo2iy"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_n462j"]
+[ext_resource type="Script" path="res://ui/HUD.gd" id="3_8hmng"]
 [ext_resource type="PackedScene" uid="uid://c7lb0gu6dn8ve" path="res://player/player.tscn" id="3_crhfj"]
 [ext_resource type="PackedScene" uid="uid://bxwn2mjsj8pl6" path="res://ui/health_bar.tscn" id="4_067c2"]
 [ext_resource type="PackedScene" uid="uid://8ll2ex4ljwrs" path="res://level/generator.tscn" id="4_bbyal"]
+[ext_resource type="PackedScene" uid="uid://b7aygpeqtr04" path="res://ui/pause_menu.tscn" id="5_7f73i"]
+[ext_resource type="Theme" uid="uid://ic3aib8j76ci" path="res://ui/default_theme.tres" id="6_yq7by"]
+[ext_resource type="PackedScene" uid="uid://bq5nlpye52ueo" path="res://enemy/blue_enemy.tscn" id="7_0xiu8"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_n462j")
@@ -12,6 +16,7 @@ script = ExtResource("1_n462j")
 position = Vector2(80, -10)
 
 [node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("3_8hmng")
 
 [node name="HealthBar" parent="HUD" instance=ExtResource("4_067c2")]
 offset_left = 16.0
@@ -20,9 +25,21 @@ offset_right = 16.0
 offset_bottom = 16.0
 
 [node name="ResourceLabel" type="Label" parent="HUD"]
-offset_left = 41.0
-offset_top = 14.0
-offset_right = 81.0
-offset_bottom = 37.0
+offset_left = 7.0
+offset_top = 29.0
+offset_right = 47.0
+offset_bottom = 52.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseMenu" parent="HUD" instance=ExtResource("5_7f73i")]
+process_mode = 3
+visible = false
+theme = ExtResource("6_yq7by")
 
 [node name="Generator" parent="." instance=ExtResource("4_bbyal")]
+
+[node name="BlueEnemy" parent="." instance=ExtResource("7_0xiu8")]
+position = Vector2(111, -5)
+
+[editable path="HUD/PauseMenu"]

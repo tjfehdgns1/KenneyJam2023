@@ -6,3 +6,8 @@
 limit_left = 0
 limit_right = 640
 script = ExtResource("1_yl5el")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

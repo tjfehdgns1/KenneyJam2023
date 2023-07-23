@@ -50,12 +50,15 @@ func physics_process(delta: float) -> BaseState:
 	if Input.is_action_pressed("jump") and fire_rate_timer.time_left == 0 and PlayerStats.resource > 0 :
 		fire_rate_timer.start()
 		PlayerStats.resource -= 1
-		player.velocity.y += -500
+		player.velocity.y = player.jet_force
 	
 	
 	player.velocity.x = move * player.air_speed
 	apply_gravity(delta)
 	player.move_and_slide()
+	
+	if PlayerStats.resource <= 0:
+		return fall_state
 	
 	
 	if player.is_on_floor():
@@ -67,8 +70,6 @@ func physics_process(delta: float) -> BaseState:
 			return idle_state
 	return null
 
-func exit():
-	PlayerStats.resource = PlayerStats.max_resource
 
 
 func apply_gravity(delta):

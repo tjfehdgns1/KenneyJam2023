@@ -14,12 +14,13 @@ class_name Player
 @onready var gravity = ((-2.0 * jump_height) / (peak_jump_time * peak_jump_time)) * -1.0
 @onready var fall_gravity = ((-2.0 * jump_height) / (descent_jump_time * descent_jump_time)) * -1.0
 @onready var jump_velocity = ((2.0 * jump_height) / (peak_jump_time)) * -1.0
-
 var has_jumped := false
 
+@export var jet_force := -200
 
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var override_animation_player: AnimationPlayer = $OverrideAnimationPlayer
 @onready var state_machine: Node = $StateMachine as StateMachine
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var state_label: Label = $StateLabel
@@ -42,6 +43,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	state_label.text = state_machine.current_state.name
+	
 	state_machine.physics_process(delta)
 	
 func _unhandled_input(event: InputEvent) -> void:
@@ -51,10 +53,15 @@ func _unhandled_input(event: InputEvent) -> void:
 func _die():
 	Sounds.play(Sounds.die)
 	Utils.instantiate_scene_on_world(DIE_EFFECT_SCENE, global_position)
-	queue_free()
-	camera_2d.reparent(get_tree().current_scene)
+#	set_physics_process(false)
+#	await get_tree().create_timer(4.0).timeout
+#	queue_free()
+#	camera_2d.reparent(get_tree().current_scene)
 
 
 func _on_hurtbox_hurt(damage) -> void:
-	Sounds.play(Sounds.hurt)
+	Events.add_screenshake.emit(2, 0.1)
 	PlayerStats.health -= damage
+	Sounds.play(Sounds.hurt)
+	print_debug("hurt")
+	override_animation_player.play("blink")
