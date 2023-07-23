@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpq8kky60grp3"]
+[gd_scene load_steps=5 format=3 uid="uid://dpq8kky60grp3"]
 
 [ext_resource type="PackedScene" uid="uid://b57qw03gn4jus" path="res://level/level_template.tscn" id="1_tp6kb"]
 [ext_resource type="PackedScene" uid="uid://bq5nlpye52ueo" path="res://enemy/blue_enemy.tscn" id="2_svtqy"]
+[ext_resource type="PackedScene" uid="uid://c4cin8jn64hj3" path="res://level/finish_area.tscn" id="3_ta30g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xs4os"]
+size = Vector2(124, 54)
 
 [node name="End1" instance=ExtResource("1_tp6kb")]
 
@@ -18,3 +22,9 @@ position = Vector2(304, 94)
 
 [node name="BlueEnemy3" parent="Enemies" index="2" instance=ExtResource("2_svtqy")]
 position = Vector2(243, 334)
+
+[node name="FinishArea" parent="." index="3" instance=ExtResource("3_ta30g")]
+position = Vector2(296, 618)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea" index="0"]
+shape = SubResource("RectangleShape2D_xs4os")

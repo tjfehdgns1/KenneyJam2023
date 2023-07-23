@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cs8mr002jo2iy"]
+[gd_scene load_steps=12 format=3 uid="uid://cs8mr002jo2iy"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_n462j"]
 [ext_resource type="Script" path="res://ui/HUD.gd" id="3_8hmng"]
@@ -12,6 +12,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xp0jl"]
 size = Vector2(155, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qosdv"]
+size = Vector2(20, 255)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_n462j")
@@ -52,9 +55,10 @@ grow_vertical = 2
 [node name="Generator" parent="." instance=ExtResource("4_bbyal")]
 
 [node name="BlueEnemy" parent="." instance=ExtResource("7_0xiu8")]
-position = Vector2(111, -5)
+position = Vector2(514, -23)
 
 [node name="FinishArea" parent="." instance=ExtResource("10_1vcrb")]
+visible = false
 position = Vector2(532, -52)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea"]
@@ -69,5 +73,19 @@ offset_bottom = -90.0
 text = "go down
 explore underground"
 horizontal_alignment = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 49
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -117.5)
+shape = SubResource("RectangleShape2D_qosdv")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_mask = 49
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(640, -121)
+shape = SubResource("RectangleShape2D_qosdv")
 
 [editable path="HUD/PauseMenu"]

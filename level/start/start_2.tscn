@@ -17,4 +17,4 @@ position = Vector2(265, 92)
 position = Vector2(363, 316)
 
 [node name="BlueEnemy3" parent="Enemies" index="2" instance=ExtResource("2_gmsqd")]
-position = Vector2(271, 590)
+position = Vector2(276, 589)

@@ -20,7 +20,10 @@ offset_right = 0.0
 [node name="BlueEnemy" parent="Enemies" index="0" instance=ExtResource("2_rnjvx")]
 position = Vector2(267, 160)
 
-[node name="BlueEnemy2" parent="Enemies" index="1" instance=ExtResource("2_rnjvx")]
+[node name="BlueEnemy3" parent="Enemies" index="1" instance=ExtResource("2_rnjvx")]
+position = Vector2(332, 159)
+
+[node name="BlueEnemy2" parent="Enemies" index="2" instance=ExtResource("2_rnjvx")]
 position = Vector2(293, 338)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="3"]
