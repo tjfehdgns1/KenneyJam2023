@@ -54,7 +54,7 @@ func physics_process(delta: float) -> BaseState:
 		PlayerStats.resource -= 1
 		player.velocity.y = player.jet_force
 		Utils.instantiate_scene_on_world(JET_EFFECT_SCENE, player.global_position)
-		Sounds.play(Sounds.jet, 1.5, -15.0)
+		Sounds.play(Sounds.jet, 1.5, -20.0)
 	
 	
 	player.velocity.x = move * player.air_speed
