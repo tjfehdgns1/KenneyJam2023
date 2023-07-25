@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcbx4ujpgbdxp"]
+
+[ext_resource type="Texture2D" uid="uid://b48mr7fl2objb" path="res://asset/level/spike.png" id="1_bavgq"]
+[ext_resource type="PackedScene" uid="uid://dit4djknhylg6" path="res://common/hitbox.tscn" id="2_kcyh5"]
+
+[node name="Spike" type="Node2D" groups=["spike"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_bavgq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(17, -8)
+texture = ExtResource("1_bavgq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-17, -8)
+texture = ExtResource("1_bavgq")
+
+[node name="Hitbox" parent="." instance=ExtResource("2_kcyh5")]
+collision_layer = 0
+collision_mask = 64
+damage = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+polygon = PackedVector2Array(-25, 0, -22, -7, 22, -7, 25, 0)

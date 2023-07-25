@@ -60,14 +60,19 @@ func _on_stats_health_empty() -> void:
 	Sounds.play(Sounds.die,1.5)
 	animation_player.play("die")
 
-#
-#func _on_jumpbox_bounce(object) -> void:
-#	if not object is Player: return
-#	if object.velocity.y > 0:
-#		hitbox.monitoring = false
-#		PlayerStats.health -= 2
-#		Events.add_screenshake.emit(1,0.3)
+
+
 
 
 func _on_hurtbox_hurt(damage) -> void:
 	stats.health -= damage
+
+
+func _on_jumpbox_bounce(object) -> void:
+	if not object is Player: return
+	if object.velocity.y > 0:
+		hitbox.monitoring = false
+		PlayerStats.health -= 2
+		stats.health -= 5
+		object.velocity.y = object.jump_velocity
+		Events.add_screenshake.emit(1,0.3)

@@ -11,9 +11,9 @@ class_name Hitbox
 
 func _on_area_entered(hurtbox : Hurtbox) -> void:
 	if not hurtbox is Hurtbox: return
-	hurtbox.get_hit(damage) 
+	hurtbox.get_hit(damage)
 
 
 func _on_body_entered(hurtbox : Hurtbox) -> void:
 	if not hurtbox is Hurtbox: return
-	hurtbox.get_hit(damage) 
+	hurtbox.get_hit(damage)

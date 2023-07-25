@@ -13,11 +13,11 @@ size = Vector2(11, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfv1d"]
 size = Vector2(11, 9)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_146c5"]
-size = Vector2(20, 4)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qdvfm"]
 size = Vector2(17, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_146c5"]
+size = Vector2(20, 4)
 
 [sub_resource type="Animation" id="Animation_wh6es"]
 length = 0.001
@@ -159,13 +159,6 @@ collision_mask = 64
 position = Vector2(-0.5, -4.5)
 shape = SubResource("RectangleShape2D_kfv1d")
 
-[node name="SpikeHitbox" parent="." instance=ExtResource("3_n8upe")]
-damage = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeHitbox"]
-position = Vector2(-1, -13)
-shape = SubResource("RectangleShape2D_146c5")
-
 [node name="Hurtbox" parent="." instance=ExtResource("4_ksj8j")]
 collision_layer = 128
 collision_mask = 0
@@ -173,6 +166,14 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-0.5, -5)
 shape = SubResource("RectangleShape2D_qdvfm")
+
+[node name="Jumpbox" parent="." instance=ExtResource("6_yybcp")]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jumpbox"]
+position = Vector2(-1, -13)
+shape = SubResource("RectangleShape2D_146c5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -191,7 +192,6 @@ position = Vector2(0, -6)
 rotation = -1.57079
 target_position = Vector2(3.76701e-05, 17)
 
-[node name="Jumpbox" parent="." instance=ExtResource("6_yybcp")]
-
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+[connection signal="bounce" from="Jumpbox" to="." method="_on_jumpbox_bounce"]
 [connection signal="health_empty" from="Stats" to="." method="_on_stats_health_empty"]

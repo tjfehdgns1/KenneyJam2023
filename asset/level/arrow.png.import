@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bymihxgs5753h"
-path="res://.godot/imported/arrow_spawner.png-6a4f679e82b9d79dba7a5e5a2f811921.ctex"
+uid="uid://bhireqtr4eoyk"
+path="res://.godot/imported/arrow.png-5441067ede4ee0afa1a5ca5787499ae2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/enemy/arrow_spawner.png"
-dest_files=["res://.godot/imported/arrow_spawner.png-6a4f679e82b9d79dba7a5e5a2f811921.ctex"]
+source_file="res://asset/level/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-5441067ede4ee0afa1a5ca5787499ae2.ctex"]
 
 [params]
 

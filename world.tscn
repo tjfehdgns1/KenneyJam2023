@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cs8mr002jo2iy"]
+[gd_scene load_steps=13 format=3 uid="uid://cs8mr002jo2iy"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_n462j"]
 [ext_resource type="Script" path="res://ui/HUD.gd" id="3_8hmng"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bcovw6geaq417" path="res://enemy/big_blue_enemy.tscn" id="9_ahw4m"]
 [ext_resource type="PackedScene" uid="uid://b0hsnjtjakelj" path="res://level/camera_limit.tscn" id="9_ejnag"]
 [ext_resource type="PackedScene" uid="uid://dcxn44e3pvp1" path="res://enemy/red_enemy.tscn" id="10_0o7ia"]
+[ext_resource type="PackedScene" uid="uid://bcbx4ujpgbdxp" path="res://level/spike.tscn" id="11_igfir"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qosdv"]
 size = Vector2(20, 255)
@@ -80,10 +81,14 @@ offset_top = -180.0
 offset_right = 640.0
 offset_bottom = 3600.0
 
-[node name="BigBlueEnemy" parent="." instance=ExtResource("9_ahw4m")]
-position = Vector2(528, -16)
-
 [node name="RedEnemy" parent="." instance=ExtResource("10_0o7ia")]
 position = Vector2(480, -16)
+
+[node name="BigBlueEnemy" parent="." instance=ExtResource("9_ahw4m")]
+position = Vector2(528, -16)
+move_x = -1
+
+[node name="Spike" parent="." instance=ExtResource("11_igfir")]
+position = Vector2(128, 0)
 
 [editable path="HUD/PauseMenu"]

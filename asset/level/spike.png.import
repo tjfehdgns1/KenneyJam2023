@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhireqtr4eoyk"
-path="res://.godot/imported/arrow.png-4bd92f8a2ec7770dc53f8cd90f497127.ctex"
+uid="uid://b48mr7fl2objb"
+path="res://.godot/imported/spike.png-bdb6153a46125b339aa8e2ee89e1be03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/enemy/arrow.png"
-dest_files=["res://.godot/imported/arrow.png-4bd92f8a2ec7770dc53f8cd90f497127.ctex"]
+source_file="res://asset/level/spike.png"
+dest_files=["res://.godot/imported/spike.png-bdb6153a46125b339aa8e2ee89e1be03.ctex"]
 
 [params]
 
