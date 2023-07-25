@@ -7,8 +7,8 @@ signal resource_empty
 
 
 
-@export var max_resource := 8 : set = set_max_resource
-@onready var resource := 8 : set = set_resource
+@export var max_resource := 5 : set = set_max_resource
+@onready var resource := 5 : set = set_resource
 
 
 func set_max_resource(value):

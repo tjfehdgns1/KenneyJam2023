@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://hvpbi4hrvk0e"]
+[gd_scene load_steps=5 format=3 uid="uid://hvpbi4hrvk0e"]
 
 [ext_resource type="PackedScene" uid="uid://b57qw03gn4jus" path="res://level/level_template.tscn" id="1_opqmb"]
 [ext_resource type="PackedScene" uid="uid://bq5nlpye52ueo" path="res://enemy/blue_enemy.tscn" id="2_el3fw"]
+[ext_resource type="PackedScene" uid="uid://c4cin8jn64hj3" path="res://level/finish_area.tscn" id="3_oa6r4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spxmw"]
+size = Vector2(144, 26)
 
 [node name="End3" instance=ExtResource("1_opqmb")]
 
@@ -13,5 +17,14 @@ layer_0/tile_data = PackedInt32Array(1376262, 65536, 4, 1310726, 65536, 4, 12451
 [node name="BlueEnemy" parent="Enemies" index="0" instance=ExtResource("2_el3fw")]
 position = Vector2(274, 97)
 
-[node name="BlueEnemy2" parent="Enemies" index="1" instance=ExtResource("2_el3fw")]
+[node name="BlueEnemy3" parent="Enemies" index="1" instance=ExtResource("2_el3fw")]
+position = Vector2(356, 94)
+
+[node name="BlueEnemy2" parent="Enemies" index="2" instance=ExtResource("2_el3fw")]
 position = Vector2(241, 255)
+
+[node name="FinishArea" parent="." index="3" instance=ExtResource("3_oa6r4")]
+position = Vector2(310, 657)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea" index="0"]
+shape = SubResource("RectangleShape2D_spxmw")

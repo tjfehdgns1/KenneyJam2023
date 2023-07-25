@@ -18,7 +18,7 @@ func enter():
 	super()
 	if PlayerStats.resource < PlayerStats.max_resource:
 		PlayerStats.resource = PlayerStats.max_resource
-		Sounds.play(Sounds.reload,1.0,-10.0)
+		Sounds.play(Sounds.reload,1.0,-5.0)
 
 func unhandled_input(event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("jump") and !player.has_jumped and player.velocity.y == 0:
