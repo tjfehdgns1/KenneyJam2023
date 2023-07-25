@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cs8mr002jo2iy"]
+[gd_scene load_steps=12 format=3 uid="uid://cs8mr002jo2iy"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_n462j"]
 [ext_resource type="Script" path="res://ui/HUD.gd" id="3_8hmng"]
@@ -7,11 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://8ll2ex4ljwrs" path="res://level/generator.tscn" id="4_bbyal"]
 [ext_resource type="PackedScene" uid="uid://b7aygpeqtr04" path="res://ui/pause_menu.tscn" id="5_7f73i"]
 [ext_resource type="Theme" uid="uid://ic3aib8j76ci" path="res://ui/default_theme.tres" id="6_yq7by"]
-[ext_resource type="PackedScene" uid="uid://bq5nlpye52ueo" path="res://enemy/blue_enemy.tscn" id="7_0xiu8"]
-[ext_resource type="PackedScene" uid="uid://c4cin8jn64hj3" path="res://level/finish_area.tscn" id="10_1vcrb"]
+[ext_resource type="PackedScene" uid="uid://bcovw6geaq417" path="res://enemy/big_blue_enemy.tscn" id="9_ahw4m"]
+[ext_resource type="PackedScene" uid="uid://b0hsnjtjakelj" path="res://level/camera_limit.tscn" id="9_ejnag"]
+[ext_resource type="PackedScene" uid="uid://dcxn44e3pvp1" path="res://enemy/red_enemy.tscn" id="10_0o7ia"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xp0jl"]
-size = Vector2(155, 61)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qosdv"]
+size = Vector2(20, 255)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_n462j")
@@ -51,16 +52,6 @@ grow_vertical = 2
 
 [node name="Generator" parent="." instance=ExtResource("4_bbyal")]
 
-[node name="BlueEnemy" parent="." instance=ExtResource("7_0xiu8")]
-position = Vector2(111, -5)
-
-[node name="FinishArea" parent="." instance=ExtResource("10_1vcrb")]
-position = Vector2(532, -52)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea"]
-position = Vector2(11.5, 20.5)
-shape = SubResource("RectangleShape2D_xp0jl")
-
 [node name="Label" type="Label" parent="."]
 offset_left = 176.0
 offset_top = -144.0
@@ -69,5 +60,30 @@ offset_bottom = -90.0
 text = "go down
 explore underground"
 horizontal_alignment = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 49
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -117.5)
+shape = SubResource("RectangleShape2D_qosdv")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_mask = 49
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(640, -121)
+shape = SubResource("RectangleShape2D_qosdv")
+
+[node name="CameraLimit" parent="." instance=ExtResource("9_ejnag")]
+offset_top = -180.0
+offset_right = 640.0
+offset_bottom = 3600.0
+
+[node name="BigBlueEnemy" parent="." instance=ExtResource("9_ahw4m")]
+position = Vector2(528, -16)
+
+[node name="RedEnemy" parent="." instance=ExtResource("10_0o7ia")]
+position = Vector2(480, -16)
 
 [editable path="HUD/PauseMenu"]

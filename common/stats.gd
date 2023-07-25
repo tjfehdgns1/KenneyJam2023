@@ -8,7 +8,7 @@ signal health_empty
 
 
 @export var max_health := 3 : set = set_max_health
-@onready var health := 3 : set = set_health
+@onready var health := max_health : set = set_health
 
 
 

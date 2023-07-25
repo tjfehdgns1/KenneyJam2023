@@ -4,3 +4,4 @@
 
 [node name="PlayerStats" type="Node"]
 script = ExtResource("1_pobjv")
+max_resource = 4
