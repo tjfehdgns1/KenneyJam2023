@@ -34,6 +34,22 @@ tracks/0/keys = {
 "values": [Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_mf1o8"]
+resource_name = "die"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.1, 0.8)]
+}
+
 [sub_resource type="Animation" id="Animation_tnpe8"]
 resource_name = "fall"
 length = 0.1
@@ -133,22 +149,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"creat_dust_effect"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_mf1o8"]
-resource_name = "die"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.1, 0.8)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j5j2u"]
